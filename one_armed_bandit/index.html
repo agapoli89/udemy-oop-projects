@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>JEDNORĘKI BANDYTA</h1>
+        <section class="game">
+            <div class="color"></div>
+            <div class="color"></div>
+            <div class="color"></div>
+        </section>
+        <section class="start_game">
+            <input type="number" placeholder="Podaj stawkę" id="bid">
+            <button id="start">ZAKRĘĆ!</button>
+        </section>
+        <section class="count">TWOJE ŚRODKI NA KONCIE TO: <span class="wallet"></span></section>
+        <section class="score">
+            <span class="result"></span> Za Tobą <span class="number"></span> gier, w tym <span class="wins"></span>
+            wygranych i <span class="losses"></span> przegranych.
+        </section>
+    </div>
+    <script src="Wallet.js"></script>
+    <script src="Statistics.js"></script>
+    <script src="Draw.js"></script>
+    <script src="Result.js"></script>
+    <script src="Game.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
