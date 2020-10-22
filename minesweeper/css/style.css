@@ -2,6 +2,23 @@
     --primary-color: #c0c0c0;
     --primary-color--dark: #808080;
     --alarm-color: #f80000;
+
+    --info-one-color: #0200fc;
+    --info-two-color: #017e00;
+    --info-three-color: #ff0000;
+    --info-four-color: #010080;
+    --info-five-color: #7f0300;
+    --info-six-color: #008080;
+    --info-seven-color: #000000;
+    --info-eight-color: #808080;
+
+
+    --cell-size: 4rem;
+    --game-padding: 1.5rem;
+    --border-width: 0.3rem;
+    --cells-in-row: 8;
+
+    --game-max-width: calc(var(--cell-size) * var(--cells-in-row) + calc(2* var(--game-padding)) + calc(2* var(--border-width)));
 }
 
 @font-face {
@@ -28,8 +45,8 @@ html {
 
 .game {
     background-color: var(--primary-color);
-    padding: 1.5rem;
-    max-width: 35.6rem;
+    padding: var(--game-padding);
+    max-width: var(--game-max-width);
     margin-left: auto;
     margin-right: auto;
 }
@@ -51,7 +68,7 @@ html {
     padding: .5rem;
     font-family: 'DIGITALDREAM', sans-serif;
     font-size: 3.2rem;
-    min-width: 8rem;
+    min-width: 9rem;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -136,7 +153,7 @@ html {
 }
 
 .border {
-    border: .3rem solid;
+    border: var(--border-width) solid;
 }
 
 .border--convex {
@@ -147,10 +164,63 @@ html {
     border-color: #fff var(--primary-color--dark) var(--primary-color--dark) #fff;
 }
 
+.border--revealed {
+    border-width: .1rem;
+    border-color: var(--primary-color--dark);
+}
+
 .cell {
-    width: 4rem;
-    height: 4rem;
+    width: var(--cell-size);
+    height: var(--cell-size);
     cursor: pointer;
+    background-size: 2rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-size: 2.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cell--is-flag {
+    background-image: url('../assets/flag.svg');
+}
+
+.cell--is-mine {
+    background-image: url('../assets/bomb.svg');
+    background-color: var(--alarm-color);
+}
+
+.cell-info-1 {
+    color: var(--info-one-color)
+}
+
+.cell-info-2 {
+    color: var(--info-two-color)
+}
+
+.cell-info-3 {
+    color: var(--info-three-color)
+}
+
+.cell-info-4 {
+    color: var(--info-four-color)
+}
+
+.cell-info-5 {
+    color: var(--info-five-color)
+}
+
+.cell-info-6 {
+    color: var(--info-six-color)
+}
+
+.cell-info-7 {
+    color: var(--info-seven-color)
+}
+
+.cell-info-8 {
+    color: var(--info-eight-color)
 }
 
 .hide {
