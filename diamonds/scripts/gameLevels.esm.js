@@ -164,9 +164,6 @@ export const gameLevels = [
         ]
     },
     {
-        level: 2,
-    },
-    {
         level: 3,
     },
 ];
