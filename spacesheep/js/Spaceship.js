@@ -1,17 +1,21 @@
+import {Missile} from './Missile.js';
+
 export class Spaceship {
-    #modifier = 5;
+    missiles = [];
+    #modifier = 10;
     #leftArrow = false;
     #rightArrow = false;
-    constructor(element) {
+    constructor(element, container) {
         this.element = element;
+        this.container = container;
     }
     init() {
-        this.#setPosition();
+        this.setPosition();
         this.#eventListeners();
         this.#gameLoop();
     }
 
-    #setPosition() {
+    setPosition() {
         this.element.style.bottom = '0px';
         this.element.style.left = `${window.innerWidth / 2 - this.#getPosition()}px`;
     }
@@ -33,6 +37,9 @@ export class Spaceship {
         });
         window.addEventListener('keyup', ({keyCode}) => {
             switch(keyCode) {
+                case 32:
+                    this.#shot();
+                    break;
                 case 37:
                     this.#leftArrow = false;
                     break;
@@ -49,12 +56,19 @@ export class Spaceship {
     }
 
     #whatKey() {
-        if(this.#leftArrow && this.#getPosition() > 0) {
+        if(this.#leftArrow && this.#getPosition() > 12) {
             this.element.style.left = `${parseInt(this.element.style.left, 10) - this.#modifier}px`;
                     
         }
-        if(this.#rightArrow && this.#getPosition() < window.innerWidth) {
+        if(this.#rightArrow && this.#getPosition() + 12 < window.innerWidth) {
             this.element.style.left = `${parseInt(this.element.style.left, 10) + this.#modifier}px`;
         }
+    }
+    #shot() {
+        const missile = new Missile(
+            this.#getPosition(), this.element.offsetTop, this.container
+        );
+        missile.init();
+        this.missiles.push(missile);
     }
 }
