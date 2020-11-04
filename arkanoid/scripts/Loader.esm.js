@@ -21,7 +21,7 @@ class Loader extends Common {
         this.changeVisibilityScreen(this.element, VISIBLE_SCREEN);
         this.isAllLoaded = false;
         this.totalCounter++;
-        this.totalElement = this.totalCounter;
+        this.totalElement.textContent = this.totalCounter;
         const image = new Image();
 
         image.src = imageUrl;
@@ -34,6 +34,7 @@ class Loader extends Common {
         this.changeVisibilityScreen(this.element, VISIBLE_SCREEN);
         this.isAllLoaded = false;
         this.totalCounter++;
+        this.totalElement.textContent = this.totalCounter;
 
         const audio = new Audio();
 
@@ -47,7 +48,7 @@ class Loader extends Common {
         event.target.removeEventListener(event.type, this.itemLoaded, false);
         this.loadedCounter++;
         this.currentElement.textContent = this.loadedCounter;
-        this.totalElement = this.totalCounter;
+        //this.totalElement.textContent = this.totalCounter;
 
         if (this.loadedCounter === this.totalCounter) {
             this.clearFlags();

@@ -23,10 +23,12 @@ class Game extends Common {
     }
 
     animate() {
-        this.checkEndOfGame();
+        //this.checkEndOfGame();
+        console.log('działa');
+        
     }
 
-    checkEndOfGame() {
+    /* checkEndOfGame() {
         if (!this.gameState.getLeftMovement() && !this.gameState.getIsMoving() && !this.gameState.getIsSwaping()) {
             media.isInLevel = false;
             media.stopBackgroundMusic();
@@ -48,35 +50,8 @@ class Game extends Common {
         } else {
             this.animationFrame = window.requestAnimationFrame(() => this.animate());
         }
-    }
+    } */
 
-    swap(firstDiamond, secondDiamond) {
-        [
-            firstDiamond.kind,
-            firstDiamond.alpha,
-            firstDiamond.match,
-            firstDiamond.x,
-            firstDiamond.y,
-            secondDiamond.kind,
-            secondDiamond.alpha,
-            secondDiamond.match,
-            secondDiamond.x,
-            secondDiamond.y,
-        ] = [
-                secondDiamond.kind,
-                secondDiamond.alpha,
-                secondDiamond.match,
-                secondDiamond.x,
-                secondDiamond.y,
-                firstDiamond.kind,
-                firstDiamond.alpha,
-                firstDiamond.match,
-                firstDiamond.x,
-                firstDiamond.y,
-            ];
-
-        this.gameState.setIsMoving(true);
-    }
 }
 
 export const game = new Game();
