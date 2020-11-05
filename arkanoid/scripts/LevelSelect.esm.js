@@ -43,6 +43,7 @@ class LevelSelect extends Common {
         this.loadLevel(event.currentTarget.value);
     }
     loadLevel(level) {
+        
         if (media.spriteImage && media.backgroundMusic) {
             game.playLevel(level);
             return;
