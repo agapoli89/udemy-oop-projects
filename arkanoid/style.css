@@ -268,7 +268,7 @@ body {
     backdrop-filter: blur(2px);
 }
 
-.loading-screen__in {
+.loading-screen__info {
     margin-top: 257px;
     color: rgba(175, 228, 35);
     font-size: 16px;

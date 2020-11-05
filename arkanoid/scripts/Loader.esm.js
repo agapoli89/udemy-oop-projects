@@ -51,6 +51,7 @@ class Loader extends Common {
         //this.totalElement.textContent = this.totalCounter;
 
         if (this.loadedCounter === this.totalCounter) {
+            console.log('itemLoaded');
             this.clearFlags();
             this.changeVisibilityScreen(this.element, HIDDEN_SCREEN);
             window.dispatchEvent(new CustomEvent(DATALOADED_EVENT_NAME));
