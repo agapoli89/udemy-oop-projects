@@ -53,3 +53,25 @@ const book = {
 }
 
 book.showDetails();
+
+const spaceShip = {
+    name: "Enterprise",
+    currentLocation: "Earth",
+    flyDistance: 0,
+
+    flyTo(place, distance) {
+        this.currentLocation = place,
+        this.flyDistance += distance;        
+    },
+
+    showInfo() {
+        console.log(`
+        Informacje o statku:
+        ${this.name}
+        Statek ....
+        doleciał do miejsca .....
+        Statek przeleciał już całkowity dystans ....`); 
+    }
+}
+
+spaceShip.flyTo("Mars", 10);
