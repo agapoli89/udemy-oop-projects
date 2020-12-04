@@ -31,7 +31,7 @@ const show = () => {
     console.log('nazwisko:' + currentUser.surname);
     console.log('email:' + currentUser.email);
     console.log('www:' + currentUser.www);
-    console.log('typ użytkownika:' + currentUser.name);
+    console.log('typ użytkownika:' + currentUser.userType);
 }
 
 show();
@@ -43,6 +43,13 @@ const book = {
     publisher: "Ossolineum",
 
     showDetails() {
-        
+        for (const [key, val] of Object.entries(this)) {
+            if (key === "showDetails") {
+                return;
+            }
+            console.log(key, val); 
+        }
     }
 }
+
+book.showDetails();
