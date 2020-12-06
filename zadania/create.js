@@ -72,8 +72,25 @@ const spaceShip = {
         Statek ${name}
         doleciał do miejsca ${currentLocation}
         Statek przeleciał już całkowity dystans ${flyDistance}`); 
-    }
+    },
+
+    meetClingon() {
+        const {name, currentLocation} = this;
+        let winNumbers = 0;
+        for (let i=0; i<100; i++) {
+            const random = Math.random();
+            if (random > 0.5) {
+                winNumbers++;
+            }
+        }
+        if (winNumbers >= 50) {
+            console.log(`Statek ${name} będący w okolicy ${currentLocation} zwycięsko wyszedł ze spotkania z Klingonami`);
+        } else {
+            console.warn(`Statek ${name} będący w okolicy ${currentLocation} został pokonany przez Klingonów`)
+        }
+    },
 }
 
 spaceShip.flyTo("Mars", 10);
 spaceShip.showInfo();
+spaceShip.meetClingon();
