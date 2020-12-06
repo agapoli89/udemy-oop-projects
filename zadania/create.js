@@ -1,3 +1,5 @@
+// part 1
+
 const prod1 = {
     name: "tofu", 
     price: 3.99, 
@@ -15,9 +17,9 @@ Produkt numer dwa to: ${prod2.name}.
 Produkty kosztują razem: ${prod1.price + prod2.price} pln.
 Produkty ważą razem: ${prod1.weight + prod2.weight} gr.`);
 };
-
 create();
 
+//part 2
 const currentUser = {
     name: "Aga", 
     surname: "Poli", 
@@ -36,6 +38,7 @@ const show = () => {
 
 show();
 
+//part 3
 const book = {
     title: "Pan Tadeusz", 
     author: "Adam Mickiewicz", 
@@ -54,6 +57,7 @@ const book = {
 
 book.showDetails();
 
+// part 4
 const spaceShip = {
     name: "Enterprise",
     currentLocation: "Earth",
@@ -90,7 +94,52 @@ const spaceShip = {
         }
     },
 }
-
 spaceShip.flyTo("Mars", 10);
 spaceShip.showInfo();
 spaceShip.meetClingon();
+
+// part 5
+const book2 = {
+    users: [],
+    addUser(name, age, phone) {
+        //this.users = [{name, age, phone}];
+        this.users.push({
+            name: name, 
+            age: age, 
+            phone: phone});
+    },
+    showUsers() {
+        console.log(this.users[0].name);
+        
+        console.log("Wszyscy użytkownicy w książce:");
+        this.users.forEach(user => console.log(user.name));
+        
+    },
+    findByName(name) {
+        const findedName = this.users.find(el => el.name === name);
+        if (findedName === undefined) {
+            console.log('false');
+            return;
+        }
+        console.log(findedName);
+    },
+    findByPhone(phone) {
+        const findedPhone = this.users.find(el => el.phone === phone);
+        if (findedPhone === undefined) {
+            console.log('false');
+            return;
+        }
+        console.log(findedPhone); 
+    },
+    getCount() {
+        console.log(this.users.length);
+        
+    }
+}
+
+book2.addUser('aga', 31, '508071833');
+book2.addUser('łukaszek', 34, '508071834');
+book2.showUsers();
+book2.findByName('łukaszka');
+book2.findByPhone('508071833');
+book2.getCount();
