@@ -143,3 +143,55 @@ book2.showUsers();
 book2.findByName('łukaszka');
 book2.findByPhone('508071833');
 book2.getCount();
+
+
+//part 5
+
+const tableGenerator = {
+    randomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    },
+    generateIncTable(lng) {
+        const newTable = [];
+        for(let i=0; i < lng; i++) {
+            newTable.push(i);
+        }
+        return newTable;
+    },
+    generateRandomTable(lng,min,max) {
+        const newTable = [];
+        for(let i=0; i < lng; i++) {
+            const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+            newTable.push(randomNumber);
+        }
+        return newTable;
+    },
+    generateTableFromText(str) {
+        if (typeof str === 'string') {
+            return str.split(' ');
+        } else {
+            return [];
+        }
+    },
+    getMaxFromTable(arr) {
+        return Math.max(...arr);
+    },
+    getMinFromTable(arr) {
+        return Math.min(...arr);
+    },
+    delete(arr,index) {
+        arr.splice(index,1);
+        console.log(arr);
+        
+    }
+
+}
+
+tableGenerator.randomNumber(1,5);
+tableGenerator.generateIncTable(5);
+tableGenerator.generateRandomTable(6,1,10);
+tableGenerator.generateTableFromText('Brandy and Foks');
+tableGenerator.getMaxFromTable([1,6,9,3,5]);
+tableGenerator.getMinFromTable([1,6,9,3,5]);
+tableGenerator.delete([1,5,9,8], 2)
+
