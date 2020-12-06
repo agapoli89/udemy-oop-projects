@@ -65,13 +65,15 @@ const spaceShip = {
     },
 
     showInfo() {
+        const {name, currentLocation, flyDistance} = this;
         console.log(`
-        Informacje o statku:
-        ${this.name}
-        Statek ....
-        doleciał do miejsca .....
-        Statek przeleciał już całkowity dystans ....`); 
+        Informacje o statku: ${name}
+        ---------------------------------
+        Statek ${name}
+        doleciał do miejsca ${currentLocation}
+        Statek przeleciał już całkowity dystans ${flyDistance}`); 
     }
 }
 
 spaceShip.flyTo("Mars", 10);
+spaceShip.showInfo();
