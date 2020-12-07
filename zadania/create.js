@@ -181,8 +181,8 @@ const tableGenerator = {
     },
     delete(arr,index) {
         arr.splice(index,1);
-        console.log(arr);
-        
+        //console.log(arr);
+        return arr;
     }
 
 }
@@ -193,5 +193,53 @@ tableGenerator.generateRandomTable(6,1,10);
 tableGenerator.generateTableFromText('Brandy and Foks');
 tableGenerator.getMaxFromTable([1,6,9,3,5]);
 tableGenerator.getMinFromTable([1,6,9,3,5]);
-tableGenerator.delete([1,5,9,8], 2)
+console.log(tableGenerator.delete([1,5,9,8], 2));
 
+// part 6
+const text = {
+    check(txt,word) {
+        const answer = txt.includes(word);
+        return answer; 
+    },
+    getCount(txt) {
+        return txt.length;
+    },
+    getWordsCount(txt) {
+        const wordsArrey = txt.split(' ');
+        return wordsArrey.length;
+    },
+    setCapitalize(txt) {
+        const wordsArrey = txt.split(' ');
+        const bigWordArrey = wordsArrey.map(word => {
+            return word[0].toUpperCase() + word.substring(1);
+        });
+        return bigWordArrey.toString().replaceAll(',', ' ');
+    },
+    setMix(txt) {
+        const mixed = [];
+        for (let i=0; i < txt.length; i++) {
+            i % 2 === 0
+            ? mixed.push(txt[i].toUpperCase())
+            : mixed.push(txt[i])
+        }
+        return mixed.toString().replaceAll(',', '');   
+    },
+    generateRandom(lng) {
+        const alphabetA = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+        const newWordArrey = [];
+        
+        for (let i=0; i<lng; i++) {
+            const randomNumber = Math.floor(Math.random() * alphabetA.length);
+            newWordArrey.push(alphabetA[randomNumber]);
+        };
+        const newWord = newWordArrey.toString().replaceAll(',','');
+        return newWord;
+    },
+}
+
+console.log(text.check('aga i lukaszek', 'foks'));
+console.log(text.getCount('aga ma kota'));
+console.log(text.getWordsCount('aga ma kota'));
+console.log(text.setCapitalize('aga ma kotka'));
+console.log(text.setMix('aga ma kota'));
+console.log(text.generateRandom(3));
