@@ -19,7 +19,6 @@ Produkty ważą razem: ${prod1.weight + prod2.weight} gr.`);
 };
 create();
 
-//part 2
 const currentUser = {
     name: "Aga", 
     surname: "Poli", 
@@ -38,7 +37,6 @@ const show = () => {
 
 show();
 
-//part 3
 const book = {
     title: "Pan Tadeusz", 
     author: "Adam Mickiewicz", 
@@ -57,7 +55,7 @@ const book = {
 
 book.showDetails();
 
-// part 4
+// part 2
 const spaceShip = {
     name: "Enterprise",
     currentLocation: "Earth",
@@ -71,7 +69,7 @@ const spaceShip = {
     showInfo() {
         const {name, currentLocation, flyDistance} = this;
         console.log(`
-        Informacje o statku: ${name}
+        Informacje o statku:
         ---------------------------------
         Statek ${name}
         doleciał do miejsca ${currentLocation}
@@ -98,71 +96,57 @@ spaceShip.flyTo("Mars", 10);
 spaceShip.showInfo();
 spaceShip.meetClingon();
 
-// part 5
+// part 3
 const book2 = {
     users: [],
     addUser(name, age, phone) {
-        //this.users = [{name, age, phone}];
-        this.users.push({
-            name: name, 
-            age: age, 
-            phone: phone});
+        const user = {name, age, phone};
+        this.users.push(user);
     },
     showUsers() {
-        console.log(this.users[0].name);
-        
         console.log("Wszyscy użytkownicy w książce:");
-        this.users.forEach(user => console.log(user.name));
-        
+        this.users.forEach(user => console.log(user));       
     },
     findByName(name) {
         const findedName = this.users.find(el => el.name === name);
-        if (findedName === undefined) {
-            console.log('false');
-            return;
-        }
-        console.log(findedName);
+        if (findedName === undefined) return false;
+        return findedName;
     },
     findByPhone(phone) {
         const findedPhone = this.users.find(el => el.phone === phone);
-        if (findedPhone === undefined) {
-            console.log('false');
-            return;
-        }
-        console.log(findedPhone); 
+        if (findedPhone === undefined) return false;
+        return findedPhone; 
     },
     getCount() {
-        console.log(this.users.length);
-        
+        console.log(this.users.length);    
     }
 }
-
 book2.addUser('aga', 31, '508071833');
 book2.addUser('łukaszek', 34, '508071834');
 book2.showUsers();
-book2.findByName('łukaszka');
-book2.findByPhone('508071833');
+console.log(book2.findByName('łukaszka'));
+console.log(book2.findByPhone('508071833'));
 book2.getCount();
 
 
-//part 5
+//part 4
 
 const tableGenerator = {
     randomNumber(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     },
     generateIncTable(lng) {
-        const newTable = [];
+        /* const newTable = [];
         for(let i=0; i < lng; i++) {
             newTable.push(i);
         }
-        return newTable;
+        return newTable; */
+        return new Array(lng).fill(0).map((el,i) => i);
     },
     generateRandomTable(lng,min,max) {
         const newTable = [];
         for(let i=0; i < lng; i++) {
-            const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-            newTable.push(randomNumber);
+            newTable.push(this.randomNumber(min,max));
         }
         return newTable;
     },
@@ -174,10 +158,26 @@ const tableGenerator = {
         }
     },
     getMaxFromTable(arr) {
-        return Math.max(...arr);
+        //return Math.max(...arr);
+
+        let max = -1;
+        for (let i=0; i<arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        return max;
     },
     getMinFromTable(arr) {
         return Math.min(...arr);
+
+        /* let min = 99;
+        for (let i=0; i<arr.length; i++) {
+            if (arr[i] < min) {
+                min = arr[i];
+            }
+        }
+        return min; */
     },
     delete(arr,index) {
         arr.splice(index,1);
@@ -188,52 +188,58 @@ const tableGenerator = {
 }
 
 tableGenerator.randomNumber(1,5);
-tableGenerator.generateIncTable(5);
-tableGenerator.generateRandomTable(6,1,10);
+console.log(tableGenerator.generateIncTable(5));
+console.log(tableGenerator.generateRandomTable(6,1,10));
 tableGenerator.generateTableFromText('Brandy and Foks');
-tableGenerator.getMaxFromTable([1,6,9,3,5]);
-tableGenerator.getMinFromTable([1,6,9,3,5]);
+console.log(tableGenerator.getMaxFromTable([15,6,9,3,5]));
+console.log(tableGenerator.getMinFromTable([1,6,9,3,5]));
 console.log(tableGenerator.delete([1,5,9,8], 2));
 
-// part 6
+// part 5
 const text = {
     check(txt,word) {
-        const answer = txt.includes(word);
-        return answer; 
+        return txt.includes(word);
     },
     getCount(txt) {
         return txt.length;
     },
     getWordsCount(txt) {
-        const wordsArrey = txt.split(' ');
-        return wordsArrey.length;
+        return txt.split(' ').length;
     },
     setCapitalize(txt) {
-        const wordsArrey = txt.split(' ');
-        const bigWordArrey = wordsArrey.map(word => {
-            return word[0].toUpperCase() + word.substring(1);
-        });
-        return bigWordArrey.toString().replaceAll(',', ' ');
+        const wordsArray = txt.split(' ');
+        return wordsArray.map(word => word[0].toUpperCase() + word.substring(1)).join(' ');
     },
     setMix(txt) {
         const mixed = [];
         for (let i=0; i < txt.length; i++) {
             i % 2 === 0
             ? mixed.push(txt[i].toUpperCase())
-            : mixed.push(txt[i])
+            : mixed.push(txt[i].toLowerCase())
         }
         return mixed.toString().replaceAll(',', '');   
     },
     generateRandom(lng) {
-        const alphabetA = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-        const newWordArrey = [];
+        /* const alphabetA = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+        const newWordArray = [];
         
         for (let i=0; i<lng; i++) {
             const randomNumber = Math.floor(Math.random() * alphabetA.length);
-            newWordArrey.push(alphabetA[randomNumber]);
+            newWordArray.push(alphabetA[randomNumber]);
         };
-        const newWord = newWordArrey.toString().replaceAll(',','');
-        return newWord;
+        const newWord = newWordArray.toString().replaceAll(',','');
+        return newWord; */
+
+        // kartofelek007
+
+        const array = new Array(lng).fill(0);
+        const textArray = array.map(el => {
+            min = 65;
+            max = 90;
+            random = Math.floor(Math.random() * (max - min +1) + min);
+            return String.fromCharCode(random);
+        });
+        return textArray.join('');
     },
 }
 
